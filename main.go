@@ -83,7 +83,6 @@ func updateDynHost(ip string) {
 	if err != nil {
 		log.Fatal("Error creating request", err)
 	}
-	log.Println("Authenticating", username, password)
 	req.SetBasicAuth(username, password)
 
 	resp, err := client.Do(req)
