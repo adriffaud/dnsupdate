@@ -31,8 +31,6 @@ func init() {
 }
 
 func main() {
-	log.Println("Starting DNS update...")
-
 	t := time.NewTicker(5 * time.Minute)
 	for {
 		ip, err := retrievePublicIP()
@@ -54,7 +52,6 @@ func main() {
 }
 
 func retrievePublicIP() (string, error) {
-	log.Println("Retrieving public IP")
 	const IPAPI = "https://api-ipv4.ip.sb/ip"
 
 	resp, err := http.Get(IPAPI)
@@ -77,7 +74,6 @@ func updateDynHost(ip string) {
 
 	updateURL.RawQuery = params.Encode()
 
-	log.Println(updateURL.String())
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", updateURL.String(), nil)
 	if err != nil {
